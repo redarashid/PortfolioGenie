@@ -35,7 +35,7 @@ This project is developed collaboratively by a team of developers.
 - **Team Members:**
   - Rashid Reda
   - Hazem Mohamed
-  - Mostafa
+  - Mostafa Mamdouh
   - Hind Tamer
   - Walaa Gamal
 
