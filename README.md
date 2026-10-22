@@ -38,7 +38,6 @@ This project is developed collaboratively by a team of developers.
   - Mostafa
   - Hend Tamer
   - Walaa Gamal
-  - **Project Type:** Team Project
 
 ## 📚 Documentation
 
