@@ -36,7 +36,7 @@ This project is developed collaboratively by a team of developers.
   - Rashid Reda
   - Hazem Mohamed
   - Mostafa
-  - Hend Tamer
+  - Hind Tamer
   - Walaa Gamal
 
 ## 📚 Documentation
