@@ -33,7 +33,7 @@ Our goal is to help junior developers present their work effectively and build a
 This project is developed collaboratively by a team of developers.
 
 - **Team Members:**
-  - Rashid Reda
+  - Rashid Reda — **Team Leader**
   - Hazem Mohamed
   - Mostafa Mamdouh
   - Hind Tamer
