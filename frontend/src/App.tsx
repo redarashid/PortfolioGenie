@@ -1,17 +1,13 @@
-import Navbar from './components/layout/Navbar'
-import Hero from './components/layout/Hero'
-import ProductPreview from './components/layout/ProductPreview'
+import { Routes, Route } from 'react-router-dom'
+import HomePage from './pages/HomePage'
+import LoginPage from './pages/LoginPage'
 
 function App() {
   return (
-  
-    <>
-      <Navbar />
-      <Hero />
-      <ProductPreview />
-    </>
-      
-
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/login" element={<LoginPage />} />
+    </Routes>
   )
 }
 

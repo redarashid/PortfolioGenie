@@ -1,1 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
+
+@theme {
+    --font-grotesk: "Space Grotesk", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+    --color-folio-ink: #1b1a33;
+    --color-folio-muted: #8d8c99;
+    --color-folio-purple: #6c5ce7;
+    --color-folio-soft: #a79cf5;
+    --color-folio-dark: #271f3f;
+    --color-folio-card: #352e4b;
+}
