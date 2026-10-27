@@ -4,6 +4,7 @@ import ProductPreview from '../components/layout/ProductPreview'
 import { WhySection, FeaturesSection } from '../components/Landing'
 import HowItWorks from '../components/Landing/HowItWorks/HowItWorks'
 import Testimonial from '../components/Landing/Testimonial/Testimonial'
+import CTASection from '../components/layout/Footer/CTASection'
 
 export default function HomePage() {
     return (
@@ -15,6 +16,7 @@ export default function HomePage() {
             <FeaturesSection />
             <HowItWorks />
             <Testimonial />
+            <CTASection />
         </>
     )
 }

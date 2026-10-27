@@ -34,7 +34,7 @@ function Navbar() {
             Folio<span className="text-[#6753DB]">.</span>
           </span>
         </a>
-        <div className="hidden items-center gap-8 lg:flex xl:gap-10">
+        <div className="hidden items-center gap-8 lg:flex xl:gap-10 ">
           {links.map((link) => (
             <a
               key={link.label}
@@ -67,7 +67,7 @@ function Navbar() {
       </div>
       {isMenuOpen && (
         <div className="border-t border-gray-100 bg-white px-4 py-4 shadow-lg sm:hidden">
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-1 ">
             {links.map((link) => (
               <a
                 key={link.label}
