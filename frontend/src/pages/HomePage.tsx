@@ -2,6 +2,8 @@ import Navbar from '../components/layout/Navbar'
 import Hero from '../components/layout/Hero'
 import ProductPreview from '../components/layout/ProductPreview'
 import { WhySection, FeaturesSection } from '../components/Landing'
+import HowItWorks from '../components/Landing/HowItWorks/HowItWorks'
+import Testimonial from '../components/Landing/Testimonial/Testimonial'
 
 export default function HomePage() {
     return (
@@ -11,6 +13,8 @@ export default function HomePage() {
             <ProductPreview />
             <WhySection />
             <FeaturesSection />
+            <HowItWorks />
+            <Testimonial />
         </>
     )
 }
