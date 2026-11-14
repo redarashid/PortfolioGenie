@@ -4,12 +4,15 @@ import PersonalInfoSection from "./PersonalInfoSection";
 import ProfileCompletion from "./ProfileCompletion";
 import SaveBar from "./SaveBar";
 import SkillsSection from "./SkillsSection";
+import WorkExperienceSection from "./WorkExperience";
+import EducationSection from "./EducationSection";
 import {
   TOTAL_SECTIONS,
   countCompletedSections,
   getErrors,
 } from "./portfolioData";
 import { usePortfolioDraft } from "./usePortfolioDraft";
+import SocialLinksSection from "./SocialLinksSection";
 
 export default function MyPortfolio() {
   const {
@@ -19,6 +22,13 @@ export default function MyPortfolio() {
     updateAbout,
     addSkill,
     removeSkill,
+    addExperience,
+    updateExperience,
+    removeExperience,
+    addEducation,
+    updateEducation,
+    removeEducation,
+    updateSocialLinks,
     saveNow,
   } = usePortfolioDraft();
   const [showErrors, setShowErrors] = useState(false);
@@ -62,6 +72,22 @@ export default function MyPortfolio() {
             skills={draft.skills}
             onAdd={addSkill}
             onRemove={removeSkill}
+          />
+          <WorkExperienceSection
+            experiences={draft.experiences}
+            onAdd={addExperience}
+            onUpdate={updateExperience}
+            onRemove={removeExperience}
+          />
+          <EducationSection
+            education={draft.education}
+            onAdd={addEducation}
+            onUpdate={updateEducation}
+            onRemove={removeEducation}
+          />
+          <SocialLinksSection
+            values={draft.socialLinks}
+            onChange={updateSocialLinks}
           />
         </div>
       </div>
