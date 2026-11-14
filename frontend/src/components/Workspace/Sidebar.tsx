@@ -24,7 +24,7 @@ interface NavItem {
 }
 
 const mainItems: NavItem[] = [
-  { label: "Home", icon: HomeIcon, to: "/" },
+  { label: "Home", icon: HomeIcon, to: "/home" },
   { label: "My Portfolio", icon: ContactIcon, to: "/my-portfolio" },
   { label: "My Projects", icon: FolderIcon },
   { label: "Folio AI", icon: SparklesIcon },

@@ -2,6 +2,8 @@ import type {
   FormErrors,
   PortfolioDraft,
   SkillCategory,
+  Education,
+  SocialLinks,
 } from "./types";
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
@@ -13,8 +15,31 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 
 export const SUMMARY_MAX_LENGTH = 600;
 
+export const emptyEducation: Education = {
+  id: "",
+  degree: "",
+  institution: "",
+  fieldOfStudy: "",
+  startYear: "",
+  graduationYear: "",
+  description: "",
+};
+
+export function createEmptyEducation(): Education {
+  return {
+    ...emptyEducation,
+    id: crypto.randomUUID(),
+  };
+}
+export const emptySocialLinks: SocialLinks = {
+  github: "",
+  linkedin: "",
+  website: "",
+  behance: "",
+};
+
 /** Total number of sections in the portfolio form (only the first 3 are built so far). */
-export const TOTAL_SECTIONS = 7;
+export const TOTAL_SECTIONS = 6;
 
 export const COUNTRIES = [
   "Egypt",
@@ -41,6 +66,9 @@ export const emptyDraft: PortfolioDraft = {
   },
   about: { summary: "", objective: "" },
   skills: { languages: [], frameworks: [], tools: [], soft: [] },
+  experiences: [],
+  education: [],
+  socialLinks: emptySocialLinks,
 };
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -75,6 +103,20 @@ export function countCompletedSections(draft: PortfolioDraft): number {
   const personalDone = !errors.fullName && !errors.title && !errors.email;
   const aboutDone = !errors.summary;
   const skillsDone = Object.values(draft.skills).some((list) => list.length > 0);
+  const experiencesDone = draft.experiences.some(
+    (experience) =>
+      experience.jobTitle.trim() &&
+      experience.companyName.trim() &&
+      experience.startDate
+  );
 
-  return [personalDone, aboutDone, skillsDone].filter(Boolean).length;
+  const educationDone = draft.education.some(
+    (item) =>
+      item.degree.trim() &&
+      item.institution.trim()
+  );
+
+  const socialLinksDone = Object.values(draft.socialLinks).some((link) => link.trim().length > 0);
+
+  return [personalDone, aboutDone, skillsDone, experiencesDone, educationDone, socialLinksDone].filter(Boolean).length;
 }

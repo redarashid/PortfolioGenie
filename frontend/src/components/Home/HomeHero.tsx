@@ -108,7 +108,7 @@ const PenIcon = createIcon(
 /* ------------------------------------------------------------------ */
 const NAV_ITEMS: NavItem[] = [
   { label: "Home", href: "/", icon: HomeIcon },
-  { label: "My Portfolio", href: "/portfolio", icon: BookIcon },
+  { label: "My Portfolio", href: "/my-portfolio", icon: BookIcon },
   { label: "My Projects", href: "/projects", icon: FolderIcon },
   { label: "Folio AI", href: "/ai", icon: WandIcon },
   { label: "Settings", href: "/settings", icon: SlidersIcon },
