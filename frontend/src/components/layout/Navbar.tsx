@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -9,9 +10,11 @@ function Navbar() {
     { label: "Showcase", href: "#showcase" },
     { label: "About", href: "#about" },
   ];
+
   return (
     <nav className='relative z-20 border-b border-gray-100 bg-white'>
       <div className='mx-auto flex min-h-16 w-full items-center justify-between gap-4 px-5 sm:px-8 lg:px-10'>
+        {/* اللوجو */}
         <a href='#' className='flex shrink-0 items-center gap-3'>
           <span className='relative flex h-10 w-10 -rotate-6 items-center justify-center rounded-xl bg-[#6753DB] text-white shadow-sm'>
             <svg
@@ -35,6 +38,8 @@ function Navbar() {
             Folio<span className='text-[#6753DB]'>.</span>
           </span>
         </a>
+
+        {/* الروابط في الشاشات الكبيرة */}
         <div className='hidden items-center gap-8 lg:flex xl:gap-10 '>
           {links.map((link) => (
             <a
@@ -46,19 +51,33 @@ function Navbar() {
             </a>
           ))}
         </div>
-        <div className='hidden shrink-0 items-center gap-6 sm:flex'>
+
+        {/* الأزرار للشاشات الكبيرة */}
+        <div className='hidden shrink-0 items-center gap-4 sm:flex'>
           <Link
             to='/login'
-            className='whitespace-nowrap text-xs text-[#1F1D32] transition hover:text-violet-600'
+            className='whitespace-nowrap text-xs font-medium text-[#1F1D32] transition hover:text-violet-600'
           >
             Log in
           </Link>
 
-          <button className='flex items-center gap-2 whitespace-nowrap rounded-lg bg-[#1F1D32] px-3 py-2.5 text-xs font-medium text-white transition hover:bg-violet-700 sm:px-4'>
+          <Link
+            to='/register'
+            className='whitespace-nowrap rounded-lg border border-gray-200 px-3 py-2 text-xs font-medium text-gray-700 transition hover:bg-gray-50 hover:text-violet-600 sm:px-4'
+          >
+            Sign Up
+          </Link>
+
+          <Link
+            to='/login'
+            className='flex items-center gap-2 whitespace-nowrap rounded-lg bg-[#1F1D32] px-3 py-2.5 text-xs font-medium text-white transition hover:bg-violet-700 sm:px-4'
+          >
             Build your portfolio
             <span>→</span>
-          </button>
+          </Link>
         </div>
+
+        {/* زرار القائمة للموبايل */}
         <button
           type='button'
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -69,6 +88,8 @@ function Navbar() {
           {isMenuOpen ? "×" : "☰"}
         </button>
       </div>
+
+      {/* قائمة الموبايل المنسدلة */}
       {isMenuOpen && (
         <div className='border-t border-gray-100 bg-white px-4 py-4 shadow-lg sm:hidden'>
           <div className='flex flex-col gap-1 '>
@@ -86,18 +107,31 @@ function Navbar() {
             <Link
               to='/login'
               onClick={() => setIsMenuOpen(false)}
-              className='mt-2 rounded-lg px-3 py-3 text-center text-sm text-[#1F1D32] hover:bg-violet-50 hover:text-violet-600'
+              className='mt-2 rounded-lg px-3 py-3 text-center text-sm font-medium text-[#1F1D32] hover:bg-violet-50 hover:text-violet-600'
             >
               Log in
             </Link>
 
-            <button className='mt-1 flex items-center justify-center gap-2 rounded-lg bg-[#1F1D32] px-4 py-3 text-sm font-medium text-white transition hover:bg-violet-700'>
+            <Link
+              to='/register'
+              onClick={() => setIsMenuOpen(false)}
+              className='rounded-lg border border-gray-200 px-3 py-3 text-center text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-violet-600'
+            >
+              Sign Up
+            </Link>
+
+            <Link
+              to='/login'
+              onClick={() => setIsMenuOpen(false)}
+              className='mt-1 flex items-center justify-center gap-2 rounded-lg bg-[#1F1D32] px-4 py-3 text-sm font-medium text-white transition hover:bg-violet-700'
+            >
               Build your portfolio →
-            </button>
+            </Link>
           </div>
         </div>
       )}
     </nav>
   );
 }
+
 export default Navbar;

@@ -1,7 +1,8 @@
-
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
+// استيراد مسارات جيت هب بطريقة الـ import الحديثة
+import githubRoutes from "./routes/github.routes.js";
 
 const app = express();
 
@@ -26,5 +27,8 @@ app.get("/api/health", (req, res) => {
     message: "PortfolioGenie API is running",
   });
 });
+
+// استخدام المسارات تحت البادئة /api/github
+app.use("/api/github", githubRoutes);
 
 export default app;
