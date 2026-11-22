@@ -27,7 +27,9 @@ app.get("/api/health", (req, res) => {
     message: "PortfolioGenie API is running",
   });
 });
-
+import aiRoutes from "./routes/ai.routes.js";
+// ... تحت سطر app.use("/api/github", githubRoutes);
+app.use("/api/ai", aiRoutes);
 // استخدام المسارات تحت البادئة /api/github
 app.use("/api/github", githubRoutes);
 

@@ -1,19 +1,39 @@
 import axios from "axios";
 
+const handleGitHubError = (error) => {
+  if (error.response) {
+    const { status, headers, data } = error.response;
+    if (status === 401) {
+      throw new Error("Invalid or expired GitHub OAuth token.");
+    }
+    if (status === 403 && headers["x-ratelimit-remaining"] === "0") {
+      throw new Error(
+        "GitHub API rate limit exceeded. Please try again later."
+      );
+    }
+    throw new Error(data?.message || `GitHub API error (${status})`);
+  }
+  throw new Error("Network error while connecting to GitHub.");
+};
+
 // 1. جلب الـ Repos من REST API
 export const getUserRepos = async (githubToken) => {
-  const response = await axios.get("https://api.github.com/user/repos", {
-    headers: {
-      Authorization: `Bearer ${githubToken}`,
-      Accept: "application/vnd.github.v3+json",
-    },
-    params: {
-      sort: "updated",
-      per_page: 50,
-      type: "owner",
-    },
-  });
-  return response.data;
+  try {
+    const response = await axios.get("https://api.github.com/user/repos", {
+      headers: {
+        Authorization: `Bearer ${githubToken}`,
+        Accept: "application/vnd.github.v3+json",
+      },
+      params: {
+        sort: "updated",
+        per_page: 50,
+        type: "owner",
+      },
+    });
+    return response.data;
+  } catch (error) {
+    handleGitHubError(error);
+  }
 };
 
 // 2. جلب الـ Pinned Repos + نشاط الـ Commits عبر GraphQL API
@@ -46,21 +66,25 @@ export const getGraphQLData = async (githubToken) => {
     }
   `;
 
-  const response = await axios.post(
-    "https://api.github.com/graphql",
-    { query },
-    {
-      headers: {
-        Authorization: `Bearer ${githubToken}`,
-      },
+  try {
+    const response = await axios.post(
+      "https://api.github.com/graphql",
+      { query },
+      {
+        headers: {
+          Authorization: `Bearer ${githubToken}`,
+        },
+      }
+    );
+
+    if (response.data.errors) {
+      throw new Error(response.data.errors[0].message);
     }
-  );
 
-  if (response.data.errors) {
-    throw new Error(response.data.errors[0].message);
+    return response.data.data.viewer;
+  } catch (error) {
+    handleGitHubError(error);
   }
-
-  return response.data.data.viewer;
 };
 
 // 3. خدمة تحليل بيانات GitHub
