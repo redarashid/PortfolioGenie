@@ -5,6 +5,7 @@ import HomeHero from "./components/Home/HomeHero";
 import MyPortfolioPage from "./pages/MyPortfolioPage";
 import HomePage from "./components/Home/HomeHero";
 import FolioAIPage from "./pages/FolioAIPage";
+import LogoutPage from "./pages/LogoutPage";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route path='/home' element={<HomeHero />} />
       <Route path='/ai' element={<FolioAIPage />} />
       <Route path='/login' element={<LoginPage />} />
+      <Route path='/logout' element={<LogoutPage />} />
       <Route path='/my-portfolio' element={<MyPortfolioPage />} />
       <Route path='/register' element={<RegisterPage />} />
     </Routes>
